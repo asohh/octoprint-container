@@ -1,0 +1,5 @@
+FROM fedora:33
+
+RUN dnf install -y gcc python-devel && pip install octoprint && useradd octoprint && dnf remove -y gcc python-devel && dnf clean all
+USER octoprint
+CMD chown octoprint: /home/octoprint && octoprint serve
